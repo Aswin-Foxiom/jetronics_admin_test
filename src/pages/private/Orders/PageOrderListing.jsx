@@ -3,10 +3,50 @@ import { ContextDatas } from "../../../services/Context";
 import Pagination from "../../../components/Pagination";
 import { useEffect } from "react";
 import Loader from "../../../components/Loader";
+import { Link } from "react-router-dom";
+import { basePath, ordersPath } from "../../../services/UrlPaths";
 
 function PageOrderListing() {
   const { mobileSide } = useContext(ContextDatas);
   const [pageLoading, setpageLoading] = useState(true);
+  const [orders, setorders] = useState([
+    {
+      _id: "60d5ecb2f3f3c7b8a8b8b8b8",
+      orderId: 1,
+      customerName: "John Doe",
+      productName: "Laptop",
+      quantity: 2,
+      totalPrice: 1200.0,
+      status: "Delivered",
+    },
+    {
+      _id: "60d5ecb2f3f3c7b8a8b8b8b9",
+      orderId: 2,
+      customerName: "Jane Smith",
+      productName: "Smartphone",
+      quantity: 1,
+      totalPrice: 800.0,
+      status: "Pending",
+    },
+    {
+      _id: "60d5ecb2f3f3c7b8a8b8b8ba",
+      orderId: 3,
+      customerName: "Michael Brown",
+      productName: "Headphones",
+      quantity: 3,
+      totalPrice: 300.0,
+      status: "Shipped",
+    },
+    {
+      _id: "60d5ecb2f3f3c7b8a8b8b8bb",
+      orderId: 4,
+      customerName: "Emily Davis",
+      productName: "Tablet",
+      quantity: 1,
+      totalPrice: 600.0,
+      status: "Delivered",
+    },
+  ]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,8 +77,7 @@ function PageOrderListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a4"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -53,8 +92,7 @@ function PageOrderListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a5"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -69,8 +107,7 @@ function PageOrderListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a6"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -85,8 +122,7 @@ function PageOrderListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a7"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -100,14 +136,12 @@ function PageOrderListing() {
                         <div class="layout-button mt-0  justify-content-end">
                           <button
                             type="button"
-                            class="btn btn-default btn-squared btn-light px-20 "
-                          >
+                            class="btn btn-default btn-squared btn-light px-20 ">
                             cancel
                           </button>
                           <button
                             type="button"
-                            class="btn btn-primary btn-default btn-squared px-30"
-                          >
+                            class="btn btn-primary btn-default btn-squared px-30">
                             save
                           </button>
                         </div>
@@ -117,6 +151,7 @@ function PageOrderListing() {
                 </div>
               </div>
             </div>
+
             <div className="row">
               <div className="col-12 mt-30">
                 <div className="card border-0">
@@ -125,8 +160,7 @@ function PageOrderListing() {
                     <div className="card-extra">
                       <ul
                         className="card-tab-links nav-tabs nav"
-                        role="tablist"
-                      >
+                        role="tablist">
                         <li>
                           <a
                             className="active"
@@ -134,8 +168,7 @@ function PageOrderListing() {
                             data-bs-toggle="tab"
                             id="t_landing-today-tab"
                             role="tab"
-                            aria-selected="true"
-                          >
+                            aria-selected="true">
                             Today
                           </a>
                         </li>
@@ -145,8 +178,7 @@ function PageOrderListing() {
                             data-bs-toggle="tab"
                             id="t_landing-week-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Week
                           </a>
                         </li>
@@ -156,8 +188,7 @@ function PageOrderListing() {
                             data-bs-toggle="tab"
                             id="t_landing-month-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Month
                           </a>
                         </li>
@@ -167,8 +198,7 @@ function PageOrderListing() {
                             data-bs-toggle="tab"
                             id="t_landing-year-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Year
                           </a>
                         </li>
@@ -180,8 +210,7 @@ function PageOrderListing() {
                           id="topPage"
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
-                          aria-expanded="false"
-                        >
+                          aria-expanded="false">
                           <img
                             src="img/svg/more-horizontal.svg"
                             alt="more-horizontal"
@@ -190,8 +219,7 @@ function PageOrderListing() {
                         </a>
                         <div
                           className="dropdown-menu dropdown-menu-right"
-                          aria-labelledby="topPage"
-                        >
+                          aria-labelledby="topPage">
                           <a className="dropdown-item" href="#">
                             Action
                           </a>
@@ -211,8 +239,7 @@ function PageOrderListing() {
                         className="tab-pane fade active show"
                         id="t_landing-today"
                         role="tabpanel"
-                        aria-labelledby="t_landing-today-tab"
-                      >
+                        aria-labelledby="t_landing-today-tab">
                         <div className="userDatatable  mt-1 p-2 table-responsive">
                           <table className="table table--default body-px-25">
                             <thead>
@@ -238,15 +265,25 @@ function PageOrderListing() {
                                   </span>
                                 </th>
                                 <th>
-                                  <span class="userDatatable-title">Name</span>
-                                </th>
-                                <th>
                                   <span class="userDatatable-title">
-                                    Assigned Dr
+                                    {" "}
+                                    Customer Name
                                   </span>
                                 </th>
                                 <th>
-                                  <span class="userDatatable-title">Date</span>
+                                  <span class="userDatatable-title">
+                                    Product Name
+                                  </span>
+                                </th>
+                                <th>
+                                  <span class="userDatatable-title">
+                                    Quantity
+                                  </span>
+                                </th>
+                                <th>
+                                  <span class="userDatatable-title">
+                                    Total Price
+                                  </span>
                                 </th>
                                 <th>
                                   <span class="userDatatable-title">
@@ -257,8 +294,7 @@ function PageOrderListing() {
                                   style={{
                                     textAlign: "right",
                                     paddingRight: "40px",
-                                  }}
-                                >
+                                  }}>
                                   <span className="userDatatable-title">
                                     Action
                                   </span>
@@ -266,64 +302,77 @@ function PageOrderListing() {
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>
-                                  <div class="checkbox-theme-default custom-checkbox ">
-                                    <input
-                                      class="checkbox"
-                                      type="checkbox"
-                                      name="check2"
-                                      id="check-2"
-                                    />
-                                    <label for="check-2">
-                                      <span class="checkbox-text"></span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>#123</td>
-                                <td>New Test Order</td>
-                                <td>Dr. Rajesh venkiteswarn</td>
-                                <td>13 Mar 2024</td>
-                                <td>
-                                  <div class="userDatatable-content d-inline-block mt-2">
-                                    <span class="bg-opacity-success  color-success status_pills userDatatable-content-status active">
-                                      active
-                                    </span>
-                                  </div>
-                                </td>
-
-                                <td>
-                                  <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
-                                    <li>
-                                      <a href="#" class="view">
-                                        <i class="uil uil-eye"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#" class="edit">
-                                        <i class="uil uil-edit"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#" class="remove">
-                                        <i class="uil uil-trash-alt"></i>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </td>
-                              </tr>
-                              {/* <tr>
-                            <td colSpan={7}>
-                              <div class="dm-empty text-center">
-                                <div class="dm-empty__image">
-                                  <img src="/img/svg/1.png" alt="Admin Empty" />
-                                </div>
-                                <div class="dm-empty__text">
-                                  <p class>No Data Available</p>
-                                </div>
-                              </div>
-                            </td>
-                          </tr> */}
+                              {orders?.length > 0 ? (
+                                <>
+                                  {orders.map((order) => (
+                                    <tr>
+                                      <td>
+                                        <div className="checkbox-theme-default custom-checkbox">
+                                          <input
+                                            className="checkbox"
+                                            type="checkbox"
+                                            name="check2"
+                                            id={`check-${order.orderId}`} // Assuming each order has a unique ID
+                                          />
+                                          <label
+                                            htmlFor={`check-${order.orderId}`}>
+                                            <span className="checkbox-text"></span>
+                                          </label>
+                                        </div>
+                                      </td>
+                                      <Link to={`${basePath}${ordersPath}/${order?._id}`}>
+                                        <td>{order.orderId}</td>{" "}
+                                      </Link>
+                                      <td>{order.customerName}</td>{" "}
+                                      <td>{order.productName}</td>{" "}
+                                      <td>{order.quantity}</td>{" "}
+                                      <td>{order.totalPrice}</td>{" "}
+                                      <td>
+                                        <div className="userDatatable-content d-inline-block mt-2">
+                                          <span className="bg-opacity-success color-success status_pills userDatatable-content-status active">
+                                            active
+                                          </span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <ul className="orderDatatable_actions mb-0 d-flex flex-wrap">
+                                          <li>
+                                            <a href="#" className="view">
+                                              <i className="uil uil-eye"></i>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="#" className="edit">
+                                              <i className="uil uil-edit"></i>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="#" className="remove">
+                                              <i className="uil uil-trash-alt"></i>
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </>
+                              ) : (
+                                <tr>
+                                  <td colSpan={7}>
+                                    <div className="dm-empty text-center">
+                                      <div className="dm-empty__image">
+                                        <img
+                                          src="/img/svg/1.png"
+                                          alt="Admin Empty"
+                                        />
+                                      </div>
+                                      <div className="dm-empty__text">
+                                        <p>No Data Available</p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
                             </tbody>
                           </table>
                         </div>

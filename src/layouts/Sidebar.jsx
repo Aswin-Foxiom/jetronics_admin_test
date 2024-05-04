@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextDatas } from "../services/Context";
-import { basePath } from "../services/UrlPaths";
+import { basePath, brandPath, categoryPath, ordersPath } from "../services/UrlPaths";
 import { Link, useNavigate } from "react-router-dom/dist";
 
 function Sidebar() {
@@ -75,10 +75,10 @@ function Sidebar() {
                   <Link to="/products">Products List</Link>
                 </li>
                 <li className="">
-                  <a href="/">Category</a>
+                  <Link to={basePath+categoryPath}>Category</Link>
                 </li>
                 <li className="">
-                  <a href="/">Brands</a>
+                  <Link to={basePath+brandPath}>Brands</Link>
                 </li>
               </ul>
             </li>
@@ -131,7 +131,7 @@ function Sidebar() {
                   <a href="/">Missing Order</a>
                 </li>
                 <li className="">
-                  <a href="/">Order List</a>
+                  <a href={basePath+ordersPath}>Order List</a>
                 </li>
               </ul>
             </li>
