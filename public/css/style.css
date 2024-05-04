@@ -20553,7 +20553,7 @@ td.order-summery .total>div {
 
 .selling-table-wrap table tbody td {
     white-space: nowrap;
-    padding: 10px 15px 10px 0;
+    /* padding: 10px 15px 10px 0; */
     color: var(--color-dark)
 }
 
@@ -20646,9 +20646,9 @@ td.order-summery .total>div {
     height: 4px
 }
 
-.selling-table-wrap--source.selling-table-wrap table tbody td {
+/* .selling-table-wrap--source.selling-table-wrap table tbody td {
     width: 20%
-}
+} */
 
 .selling-table-wrap--source .table--default tr td:last-child {
     padding-right: 0

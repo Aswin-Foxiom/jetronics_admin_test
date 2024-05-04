@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextDatas } from "../services/Context";
-import { basePath, brandPath, categoryPath, ordersPath } from "../services/UrlPaths";
+import { basePath, brandPath, categoryPath, ordersPath ,AddWebsitePath,WebsiteListPath,AdminListPath,HeaderContentPath} from "../services/UrlPaths";
 import { Link, useNavigate } from "react-router-dom/dist";
 
 function Sidebar() {
@@ -11,6 +11,7 @@ function Sidebar() {
     setdropdownItems,
     urlPath,
     setUrlPath,
+   
   } = useContext(ContextDatas);
 
   // const [dropdownItems, setdropdownItems] = useState({
@@ -102,13 +103,16 @@ function Sidebar() {
                 style={{ display: dropdownItems?.websites ? "block" : "none" }}
               >
                 <li className="">
-                  <a href="/">Add Website</a>
+                <Link to={basePath+AddWebsitePath}>Add Website</Link>
+                  {/* <a href="/">Add Website</a> */}
                 </li>
                 <li className="">
-                  <a href="/">Website List</a>
+                  <Link to={basePath+WebsiteListPath}>Website List</Link>
+                  {/* <a href="/">Website List</a> */}
                 </li>
                 <li className="">
-                  <a href="/">Admin List</a>
+                <Link to={basePath+AdminListPath}>Admin List</Link>
+               
                 </li>
               </ul>
             </li>
@@ -155,7 +159,8 @@ function Sidebar() {
                 style={{ display: dropdownItems?.contents ? "block" : "none" }}
               >
                 <li className="">
-                  <a href="/">Header Contents</a>
+                <Link to={basePath+HeaderContentPath}>Header Contents</Link>
+                  {/* <a href="/">Header Contents</a> */}
                 </li>
                 <li className="">
                   <a href="/">Footer Contents</a>
