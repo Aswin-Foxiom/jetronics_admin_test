@@ -10,3 +10,7 @@ export const settingsPath = "settings";
 export const notificationPath = "notification";
 export const brandPath = "brand";
 export const categoryPath = "category";
+export const AddWebsitePath = "add-website";
+export const WebsiteListPath = "website-list";
+export const AdminListPath = "admin-list";
+export const HeaderContentPath = "header-content";
