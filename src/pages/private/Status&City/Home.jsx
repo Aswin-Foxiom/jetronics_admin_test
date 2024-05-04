@@ -21,10 +21,10 @@ function StatusHome() {
   }, []);
   return (
     <>
-      {pageLoading ? (
-        <Loader />
-      ) : (
-        <div className={`contents  ${mobileSide ? "expanded" : ""}`}>
+      <div className={`contents  ${mobileSide ? "expanded" : ""}`}>
+        {pageLoading ? (
+          <Loader />
+        ) : (
           <div className="container-fluid">
             <div className="row">
               <div className="col-12 col-md-6 mt-30">
@@ -124,8 +124,7 @@ function StatusHome() {
                         className="tab-pane fade active show"
                         id="t_landing-today"
                         role="tabpanel"
-                        aria-labelledby="t_landing-today-tab"
-                      >
+                        aria-labelledby="t_landing-today-tab">
                         <div className="userDatatable  mt-1 p-2 table-responsive">
                           <table className="table table--default body-px-25">
                             <thead>
@@ -156,8 +155,7 @@ function StatusHome() {
                                   style={{
                                     textAlign: "right",
                                     paddingRight: "40px",
-                                  }}
-                                >
+                                  }}>
                                   <span className="userDatatable-title">
                                     Action
                                   </span>
@@ -234,8 +232,7 @@ function StatusHome() {
                     <div className="card-extra">
                       <ul
                         className="card-tab-links nav-tabs nav"
-                        role="tablist"
-                      >
+                        role="tablist">
                         <li>
                           <a
                             className="active"
@@ -243,8 +240,7 @@ function StatusHome() {
                             data-bs-toggle="tab"
                             id="t_landing-today-tab"
                             role="tab"
-                            aria-selected="true"
-                          >
+                            aria-selected="true">
                             Today
                           </a>
                         </li>
@@ -254,8 +250,7 @@ function StatusHome() {
                             data-bs-toggle="tab"
                             id="t_landing-week-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Week
                           </a>
                         </li>
@@ -265,8 +260,7 @@ function StatusHome() {
                             data-bs-toggle="tab"
                             id="t_landing-month-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Month
                           </a>
                         </li>
@@ -276,8 +270,7 @@ function StatusHome() {
                             data-bs-toggle="tab"
                             id="t_landing-year-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Year
                           </a>
                         </li>
@@ -289,8 +282,7 @@ function StatusHome() {
                           id="topPage"
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
-                          aria-expanded="false"
-                        >
+                          aria-expanded="false">
                           <img
                             src="img/svg/more-horizontal.svg"
                             alt="more-horizontal"
@@ -299,8 +291,7 @@ function StatusHome() {
                         </a>
                         <div
                           className="dropdown-menu dropdown-menu-right"
-                          aria-labelledby="topPage"
-                        >
+                          aria-labelledby="topPage">
                           <a className="dropdown-item" href="#">
                             Action
                           </a>
@@ -320,8 +311,7 @@ function StatusHome() {
                         className="tab-pane fade active show"
                         id="t_landing-today"
                         role="tabpanel"
-                        aria-labelledby="t_landing-today-tab"
-                      >
+                        aria-labelledby="t_landing-today-tab">
                         <div className="userDatatable  mt-1 p-2 table-responsive">
                           <table className="table table--default body-px-25">
                             <thead>
@@ -352,8 +342,7 @@ function StatusHome() {
                                   style={{
                                     textAlign: "right",
                                     paddingRight: "40px",
-                                  }}
-                                >
+                                  }}>
                                   <span className="userDatatable-title">
                                     Action
                                   </span>
@@ -424,8 +413,8 @@ function StatusHome() {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }

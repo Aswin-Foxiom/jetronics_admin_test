@@ -17,10 +17,10 @@ function ProductListing() {
   }, []);
   return (
     <>
-      {pageLoading ? (
-        <Loader />
-      ) : (
-        <div className={`contents  ${mobileSide ? "expanded" : ""}`}>
+      <div className={`contents  ${mobileSide ? "expanded" : ""}`}>
+        {pageLoading ? (
+          <Loader />
+        ) : (
           <div className="container-fluid">
             <div className="row mt-3">
               <div className="col-lg-12">
@@ -35,8 +35,7 @@ function ProductListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a4"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -51,8 +50,7 @@ function ProductListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a5"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -67,8 +65,7 @@ function ProductListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a6"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -83,8 +80,7 @@ function ProductListing() {
                           <div className="form-group">
                             <label
                               htmlFor="a7"
-                              className="il-gray fs-14 fw-500 align-center mb-10"
-                            >
+                              className="il-gray fs-14 fw-500 align-center mb-10">
                               One of Four Columns
                             </label>
                             <input
@@ -98,14 +94,12 @@ function ProductListing() {
                         <div class="layout-button mt-0  justify-content-end">
                           <button
                             type="button"
-                            class="btn btn-default btn-squared btn-light px-20 "
-                          >
+                            class="btn btn-default btn-squared btn-light px-20 ">
                             cancel
                           </button>
                           <button
                             type="button"
-                            class="btn btn-primary btn-default btn-squared px-30"
-                          >
+                            class="btn btn-primary btn-default btn-squared px-30">
                             save
                           </button>
                         </div>
@@ -123,8 +117,7 @@ function ProductListing() {
                     <div className="card-extra">
                       <ul
                         className="card-tab-links nav-tabs nav"
-                        role="tablist"
-                      >
+                        role="tablist">
                         <li>
                           <a
                             className="active"
@@ -132,8 +125,7 @@ function ProductListing() {
                             data-bs-toggle="tab"
                             id="t_landing-today-tab"
                             role="tab"
-                            aria-selected="true"
-                          >
+                            aria-selected="true">
                             Today
                           </a>
                         </li>
@@ -143,8 +135,7 @@ function ProductListing() {
                             data-bs-toggle="tab"
                             id="t_landing-week-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Week
                           </a>
                         </li>
@@ -154,8 +145,7 @@ function ProductListing() {
                             data-bs-toggle="tab"
                             id="t_landing-month-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Month
                           </a>
                         </li>
@@ -165,8 +155,7 @@ function ProductListing() {
                             data-bs-toggle="tab"
                             id="t_landing-year-tab"
                             role="tab"
-                            aria-selected="false"
-                          >
+                            aria-selected="false">
                             Year
                           </a>
                         </li>
@@ -178,8 +167,7 @@ function ProductListing() {
                           id="topPage"
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
-                          aria-expanded="false"
-                        >
+                          aria-expanded="false">
                           <img
                             src="img/svg/more-horizontal.svg"
                             alt="more-horizontal"
@@ -188,8 +176,7 @@ function ProductListing() {
                         </a>
                         <div
                           className="dropdown-menu dropdown-menu-right"
-                          aria-labelledby="topPage"
-                        >
+                          aria-labelledby="topPage">
                           <a className="dropdown-item" href="#">
                             Action
                           </a>
@@ -235,8 +222,7 @@ function ProductListing() {
                                     style={{
                                       textAlign: "right",
                                       paddingRight: "40px",
-                                    }}
-                                  >
+                                    }}>
                                     Action
                                   </th>
                                 </tr>
@@ -303,8 +289,8 @@ function ProductListing() {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }
