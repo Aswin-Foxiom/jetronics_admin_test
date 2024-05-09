@@ -7,118 +7,117 @@ import { Link } from "react-router-dom";
 import { basePath, ordersPath } from "../../../services/UrlPaths";
 import ExcelExport from "../../../utils/ExcelExport";
 import ToggledFilter from "../../../components/ToggledFilter";
-
-function PageOrderListing() {
-  const { mobileSide } = useContext(ContextDatas);
-  const [selectAll, setSelectAll] = useState(false);
-  console.log(selectAll,'selectAlllllllllllllllllllllllllllllllllllllllllllll')
-  const [exportexcel, setExportExcel] = useState([]);
-  console.log(exportexcel,"exportexcelwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
-  const [pageLoading, setpageLoading] = useState(true);
-  const [orders, setOrders] = useState([
-    {
-      _id: "60d5ecb2f3f3c7b8a8b8b8b8",
-      orderId: 1,
-      customerName: "John Doe",
-      productName: "Laptop",
-      quantity: 2,
-      totalPrice: 1200.0,
-      status: "Delivered",
-    },
-    {
-      _id: "60d5ecb2f3f3c7b8a8b8b8b9",
-      orderId: 2,
-      customerName: "Jane Smith",
-      productName: "Smartphone",
-      quantity: 1,
-      totalPrice: 800.0,
-      status: "Pending",
-    },
-    {
-      _id: "60d5ecb2f3f3c7b8a8b8b8ba",
-      orderId: 3,
-      customerName: "Michael Brown",
-      productName: "Headphones",
-      quantity: 3,
-      totalPrice: 300.0,
-      status: "Shipped",
-    },
-    {
-      _id: "60d5ecb2f3f3c7b8a8b8b8bb",
-      orderId: 4,
-      customerName: "Emily Davis",
-      productName: "Tablet",
-      quantity: 1,
-      totalPrice: 600.0,
-      status: "Delivered",
-    },
-  ]);
-console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeeeer")
-  const handleHeaderCheckboxChange = (e) => {
-    console.log("click")
-    const isChecked = e.target.checked;
-    setSelectAll(isChecked);
-    if (isChecked) {
-      setExportExcel([...orders]);
-    } else {
-      setExportExcel([]);
-    }
-    setOrders((prevOrders) =>
-      prevOrders.map((order) => ({
-        ...order,
-        isChecked: isChecked,
-      }))
-    );
-  };
-
-  const handleCheckboxChange = (e, order) => {
-    const isChecked = e.target.checked;
-    setOrders((prevOrders) =>
-      prevOrders.map((prevOrder) =>
-        prevOrder._id === order._id ? { ...prevOrder, isChecked } : prevOrder
-      )
-    );
-
-    if (isChecked) {
-      setExportExcel((prevExportExcel) => [...prevExportExcel, order]);
-    } else {
-      setExportExcel((prevExportExcel) =>
-        prevExportExcel.filter((item) => item._id !== order._id)
+function MissingOrderList() {
+    const { mobileSide } = useContext(ContextDatas);
+    const [selectAll, setSelectAll] = useState(false);
+    console.log(selectAll,'selectAlllllllllllllllllllllllllllllllllllllllllllll')
+    const [exportexcel, setExportExcel] = useState([]);
+    console.log(exportexcel,"exportexcelwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+    const [pageLoading, setpageLoading] = useState(true);
+    const [orders, setOrders] = useState([
+      {
+        _id: "60d5ecb2f3f3c7b8a8b8b8b8",
+        orderId: 1,
+        customerName: "John Doe",
+        productName: "Laptop",
+        quantity: 2,
+        totalPrice: 1200.0,
+        status: "Delivered",
+      },
+      {
+        _id: "60d5ecb2f3f3c7b8a8b8b8b9",
+        orderId: 2,
+        customerName: "Jane Smith",
+        productName: "Smartphone",
+        quantity: 1,
+        totalPrice: 800.0,
+        status: "Pending",
+      },
+      {
+        _id: "60d5ecb2f3f3c7b8a8b8b8ba",
+        orderId: 3,
+        customerName: "Michael Brown",
+        productName: "Headphones",
+        quantity: 3,
+        totalPrice: 300.0,
+        status: "Shipped",
+      },
+      {
+        _id: "60d5ecb2f3f3c7b8a8b8b8bb",
+        orderId: 4,
+        customerName: "Emily Davis",
+        productName: "Tablet",
+        quantity: 1,
+        totalPrice: 600.0,
+        status: "Delivered",
+      },
+    ]);
+  console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeeeer")
+    const handleHeaderCheckboxChange = (e) => {
+      console.log("click")
+      const isChecked = e.target.checked;
+      setSelectAll(isChecked);
+      if (isChecked) {
+        setExportExcel([...orders]);
+      } else {
+        setExportExcel([]);
+      }
+      setOrders((prevOrders) =>
+        prevOrders.map((order) => ({
+          ...order,
+          isChecked: isChecked,
+        }))
       );
-    }
-
-    const allChecked = orders.every((order) => order.isChecked);
-    console.log(allChecked,"allcheked...............")
-    setSelectAll(allChecked);
-  };
-
-  const modiefiedExportData = (data) => {
-    return {
-      _id: data?._id,
-      "Order ID": data?.orderId,
-      "Customer Name": data?.customerName,
-      "Product Name": data?.productName,
-      Quantity: data?.quantity,
-      "Total Price": data?.totalPrice,
-      Status: data?.status,
     };
-  };
-
-  const onExportSuccess = () => {
-    setExportExcel([]);
-    setSelectAll(false);
-    setOrders((prev) => prev.map((item) => ({ ...item, isChecked: false })));
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setpageLoading(false);
-    }, 3000); // 5000 milliseconds = 5 seconds
-
-    // Cleanup function to clear the timer if the component unmounts or the dependency array changes
-    return () => clearTimeout(timer);
-  }, []);
-
+  
+    const handleCheckboxChange = (e, order) => {
+      const isChecked = e.target.checked;
+      setOrders((prevOrders) =>
+        prevOrders.map((prevOrder) =>
+          prevOrder._id === order._id ? { ...prevOrder, isChecked } : prevOrder
+        )
+      );
+  
+      if (isChecked) {
+        setExportExcel((prevExportExcel) => [...prevExportExcel, order]);
+      } else {
+        setExportExcel((prevExportExcel) =>
+          prevExportExcel.filter((item) => item._id !== order._id)
+        );
+      }
+  
+      const allChecked = orders.every((order) => order.isChecked);
+      console.log(allChecked,"allcheked...............")
+      setSelectAll(allChecked);
+    };
+  
+    const modiefiedExportData = (data) => {
+      return {
+        _id: data?._id,
+        "Order ID": data?.orderId,
+        "Customer Name": data?.customerName,
+        "Product Name": data?.productName,
+        Quantity: data?.quantity,
+        "Total Price": data?.totalPrice,
+        Status: data?.status,
+      };
+    };
+  
+    const onExportSuccess = () => {
+      setExportExcel([]);
+      setSelectAll(false);
+      setOrders((prev) => prev.map((item) => ({ ...item, isChecked: false })));
+    };
+  
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setpageLoading(false);
+      }, 3000); // 5000 milliseconds = 5 seconds
+  
+      // Cleanup function to clear the timer if the component unmounts or the dependency array changes
+      return () => clearTimeout(timer);
+    }, []);
   return (
     <>
       {pageLoading ? (
@@ -132,8 +131,8 @@ console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeee
                   {/* <div className="card-header">
                     <h6>Filter</h6>
                   </div> */}
-                      <ToggledFilter>
-                      <div className="card-body py-md-25">
+                         <ToggledFilter>
+                         <div className="card-body py-md-25">
                     <form action="#">
                       <div className="row">
                         <div className="col-md-3">
@@ -217,8 +216,8 @@ console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeee
                       </div>
                     </form>
                   </div>
-                      </ToggledFilter>
-             
+                         </ToggledFilter>
+                 
                 </div>
               </div>
             </div>
@@ -227,8 +226,21 @@ console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeee
               <div className="col-12 mt-30">
                 <div className="card border-0">
                   <div className="card-header">
-                    <h6>Orders</h6>
+                    <h6>Missing Orders</h6>
                     <div className="card-extra">
+                    {exportexcel?.length > 0 ? (
+                      <div
+                        className="layout-button mt-0 justify-content-end p-0"
+                        style={{ margin: "0 -7px" }}
+                      >
+                        <ExcelExport
+                          format={modiefiedExportData}
+                          tableData={exportexcel}
+                          fileName={"OrderList"}
+                          onSuccess={onExportSuccess}
+                        />
+                      </div>
+                    ) : null}
                       {/* <ul
                         className="card-tab-links nav-tabs nav"
                         role="tablist"
@@ -309,20 +321,6 @@ console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeee
                           </a>
                         </div>
                       </div> */}
-                    
-                      {exportexcel?.length > 0 ? (
-                      <div
-                        className="layout-button mt-0 justify-content-end p-0"
-                        style={{ margin: "0 -7px" }}
-                      >
-                        <ExcelExport
-                          format={modiefiedExportData}
-                          tableData={exportexcel}
-                          fileName={"OrderList"}
-                          onSuccess={onExportSuccess}
-                        />
-                      </div>
-                    ) : null}
                     </div>
                   </div>
                   <div className="card-body p-0 0">
@@ -500,7 +498,7 @@ console.log(orders,"oooooooooooooooooooooooooooooooooooooooorddeeeeeeeeeeeeeeeee
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default PageOrderListing;
+export default MissingOrderList

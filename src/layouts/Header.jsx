@@ -1,8 +1,68 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ContextDatas } from "../services/Context";
-
+import {
+  basePath,
+  brandPath,
+  categoryPath,
+  ordersPath,
+  AddWebsitePath,
+  WebsiteListPath,
+  AdminListPath,
+  HeaderContentPath,
+  FooterContentPath,
+  MissingOrderPath,
+  ContactUsPath
+} from "../services/UrlPaths";
+import { Link, useNavigate } from "react-router-dom";
 function Header() {
-  const { mobileSide, setmobileSide } = useContext(ContextDatas);
+  let navigate = useNavigate();
+  const { mobileSide, setmobileSide,setUrlPath } = useContext(ContextDatas);
+  const [inputValue, setInputValue] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(true);
+  const handleInputFocus = () => {
+    setShowSuggestions(false);
+  };
+  const handleInputChange = (e) => {
+    setShowSuggestions(true);
+
+    let value = e.target.value;
+
+    if (value.length === 1 && value === " ") {
+      value = "";
+    }
+
+    setInputValue(value);
+  };
+  const suggestions = [
+    { label: "Dashboard", value: "/" },
+    { label: "Language & Country", value: basePath + "language-and-country" },
+    {
+      label: "Status & Cities",
+      value: basePath + "status-and-city",
+    },
+    { label: "Add Product", value: basePath + "add-product" },
+    { label: "Products List", value: basePath + "products" },
+    { label: "Category", value: basePath + categoryPath },
+    {
+      label: "Brands",
+      value: basePath + brandPath,
+    },
+    { label: "Add Website", value: basePath + AddWebsitePath },
+    { label: "Website List", value: basePath + WebsiteListPath },
+    { label: "Admin List", value: basePath + AdminListPath },
+    { label: "Missing Order", value: basePath + MissingOrderPath },
+    { label: "Order List", value: basePath + ordersPath },
+    { label: "Header Contents", value: basePath + HeaderContentPath },
+    { label: "Footer Contents", value: basePath + FooterContentPath },
+    { label: "Contact Us", value: basePath + ContactUsPath },
+  ];
+  const handleSuggestionSelect = (suggestion) => {
+    setInputValue(suggestion.label);
+    setUrlPath(suggestion.value);
+    return navigate(suggestion.value);
+  };
+
+
   return (
     <header className="header-top">
       <nav className="navbar navbar-light">
@@ -35,20 +95,39 @@ function Header() {
         </div>
         <div className="navbar-right">
           <ul className="navbar-right__menu">
-            <li className="nav-search">
-              <form
-                action="https://demo.dashboardmarket.com/"
-                className="search-form-topMenu show"
-              >
-                <span className="search-icon uil uil-search" />
-                <input
-                  className="form-control me-sm-2 box-shadow-none"
-                  type="search"
-                  placeholder="Search..."
-                  aria-label="Search"
-                />
-              </form>
-            </li>
+          <li className="nav-search header-search-container">
+                <form
+                  className="search-form-topMenu show"
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <span className="search-icon uil uil-search" />
+                  <input
+                    type="text"
+                    onFocus={handleInputFocus}
+                    className="form-control me-sm-2 box-shadow-none"
+                    placeholder="Search..."
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    list="suggestions"
+                    onInput={(event) => {
+                      const selectedSuggestion = suggestions.find(
+                        (suggestion) => suggestion.label === event.target.value
+                      );
+                      if (selectedSuggestion) {
+                        handleSuggestionSelect(selectedSuggestion);
+                      }
+                    }}
+                  />
+
+                  {showSuggestions && (
+                    <datalist id="suggestions" >
+                      {suggestions.map((suggestion, index) => (
+                        <option key={index} value={suggestion.label} />
+                      ))}
+                    </datalist>
+                  )}
+                </form>
+              </li>
             <li className="nav-message">
               <div className="dropdown-custom">
                 <a href="javascript:;" className="nav-item-toggle icon-active">

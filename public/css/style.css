@@ -5905,7 +5905,7 @@ body.top-menu .navbar-left .customizer-trigger+.top-menu {
 }
 
 .sidebar.collapsed .sidebar__menu-group .has-child:hover ul {
-    display: block !important;
+    display: none !important;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
@@ -25981,7 +25981,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .form-control.ih-medium {
-    height: 48px
+    height: 48px !important
 }
 
 .form-control.ih-small {
@@ -39365,3 +39365,36 @@ body:after {
     background: #888;
     /* You can change the color */
 }
+
+
+@media (max-width: 280px) {
+    #notification-header {
+        /* flexDirection: "column", */
+        flex-direction: column;
+    }
+}
+
+.header-search-container {
+    display: flex;
+}
+
+@media screen and (max-width: 1198px) {
+    .header-search-container {
+        display: none;
+    }
+}
+
+.input-search {
+    margin: 0 7px;
+    height: 44px;
+    width: 180px;
+}
+
+@media screen and (max-width: 330px) {
+    .input-search {
+        margin: 0 7px;
+        height: 44px;
+        width: 160px;
+    }
+}
+

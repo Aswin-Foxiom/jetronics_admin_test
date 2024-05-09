@@ -4,7 +4,7 @@ import RouterConnection from "./connection/RouterConnection";
 import PageLogin from "./pages/public/PageLogin";
 import PageDashboard from "./pages/private/Dasboard/PageDashboard";
 import Table from "./components/Table";
-import { basePath, brandPath, categoryPath, managerPath, ordersPath,AddWebsitePath ,WebsiteListPath,AdminListPath,HeaderContentPath} from "./services/UrlPaths";
+import { basePath, brandPath, categoryPath, managerPath, ordersPath,AddWebsitePath ,WebsiteListPath,AdminListPath,HeaderContentPath,FooterContentPath,MissingOrderPath,ContactUsPath,AddProductPath,ProductListPath,LanguageCountryPath,StatusCityPath} from "./services/UrlPaths";
 import PageManagerListing from "./pages/private/Manager/PageManagerListing";
 
 import ErrorBoundary from "./utils/ErrorBoundary";
@@ -21,6 +21,9 @@ import AddWebsite from "./pages/private/Websites/AddWebsite";
 import WebsiteList from "./pages/private/Websites/WebsiteList";
 import AdminList from "./pages/private/Websites/AdminList";
 import HeaderContent from "./pages/private/Content_managment/HeaderContent";
+import FooterContent from "./pages/private/Content_managment/FooterContent";
+import MissingOrderList from "./pages/private/Orders/MissingOrderList";
+import ContactUs from "./pages/private/Content_managment/ContactUs";
 function App() {
   return (
     <div>
@@ -33,10 +36,10 @@ function App() {
               path={basePath + managerPath}
               element={<PageManagerListing />}
             />
-            <Route path="add-product" element={<AddProduct />} />
-            <Route path="products" element={<ProductListing />} />
-            <Route path="language-and-country" element={<Home />} />
-            <Route path="status-and-city" element={<StatusHome />} />
+            <Route path={AddProductPath} element={<AddProduct />} />
+            <Route path={ProductListPath} element={<ProductListing />} />
+            <Route path={LanguageCountryPath} element={<Home />} />
+            <Route path={StatusCityPath} element={<StatusHome />} />
             <Route path={ordersPath} element={<PageOrderListing />} />
             <Route path={`${ordersPath}/:id?`} element={<OrderDetailsPage />} />
             <Route path={brandPath} element={<BrandPage/>} />
@@ -45,6 +48,10 @@ function App() {
             <Route path={WebsiteListPath} element={<WebsiteList/>} />
             <Route path={AdminListPath} element={<AdminList/>} />
             <Route path={HeaderContentPath} element={<HeaderContent/>} />
+            <Route path={FooterContentPath} element={<FooterContent/>} />
+            <Route path={MissingOrderPath} element={<MissingOrderList/>} />
+            <Route path={ContactUsPath} element={<ContactUs/>} />
+            
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

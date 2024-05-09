@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ContextDatas } from '../../../services/Context';
+import Loader from '../../../components/Loader';
+
 
 function CategoryPage() {
     const [pageLoading, setpageLoading] = useState(true);
@@ -64,7 +66,7 @@ function CategoryPage() {
         <div className="col-md-8 order-xl-1">
           <div className="card border-0 custom-margin">
             <div className="card-header">
-              <h6>Brand</h6>
+              <h6>Category</h6>
               <div
                 className="layout-button mt-0 justify-content-end p-0"
                 style={{ margin: "0 -7px" }}>

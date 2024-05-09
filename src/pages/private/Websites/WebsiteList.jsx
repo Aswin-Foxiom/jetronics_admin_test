@@ -243,7 +243,7 @@ function WebsiteList() {
                                
                                   <th>Phone</th>
 
-                                  {/* <th>Revenue</th> */}
+                          
                                   <th
                                     style={{
                                       textAlign: "right",

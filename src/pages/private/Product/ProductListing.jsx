@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ContextDatas } from "../../../services/Context";
 import Loader from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
+import ToggledFilter from "../../../components/ToggledFilter";
 
 function ProductListing() {
   const [pageLoading, setpageLoading] = useState(true);
@@ -25,10 +26,9 @@ function ProductListing() {
             <div className="row mt-3">
               <div className="col-lg-12">
                 <div className="card card-default card-md mb-4">
-                  <div className="card-header">
-                    <h6>Filter</h6>
-                  </div>
-                  <div className="card-body py-md-25">
+
+                <ToggledFilter>
+                <div className="card-body py-md-25">
                     <form action="#">
                       <div className="row">
                         <div className="col-md-3">
@@ -112,6 +112,8 @@ function ProductListing() {
                       </div>
                     </form>
                   </div>
+                </ToggledFilter>
+                
                 </div>
               </div>
             </div>
